@@ -1,6 +1,19 @@
-<div class="space-y-4">
-  <h3 class="text-lg font-medium text-gray-900">Analysis Result</h3>
-  <div class="prose prose-sm max-w-none text-gray-500">
-    <%= simple_format response %>
+
+  <% if prompt_type.present? %>
+    <div class="mb-3">
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-[#f7f7f7] text-sm font-medium">
+        <%= case prompt_type
+            when 'analyze' then 'Full Analysis'
+            when 'recommend' then 'Improvement Recommendations'
+            when 'missing' then 'Missing Keywords'
+            when 'match' then 'ATS Match Percentage'
+            else prompt_type.humanize
+            end %>
+      </span>
+    </div>
+  <% end %>
+
+  <div class="prose prose-sm max-w-none">
+    <%= format_analysis(response) %>
   </div>
-</div>
+

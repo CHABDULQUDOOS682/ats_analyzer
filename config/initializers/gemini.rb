@@ -5,13 +5,12 @@ unless Rails.env.test?
     GEMINI_CLIENT = Gemini.new(
       credentials: {
         service: "generative-language-api",
-        api_key: ENV.fetch("GENAI_API_KEY") # This will raise an error if key is missing
+        api_key: ENV.fetch("GENAI_API_KEY")
       },
       options: {
         model: "gemini-1.5-pro",
         server_sent_events: true,
         timeout: 30
-        # api_version: "v1beta" # Make sure this matches the current API version
       }
     )
 

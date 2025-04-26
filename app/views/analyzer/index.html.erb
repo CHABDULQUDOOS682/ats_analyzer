@@ -1,61 +1,114 @@
-<div class="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-3xl mx-auto">
-    <div class="text-center mb-8">
-      <h1 class="text-3xl font-bold text-gray-900">ATS Resume Analyzer</h1>
-      <p class="mt-2 text-sm text-gray-600">
-        Upload your resume and job description to get ATS analysis and improvement suggestions
-      </p>
-    </div>
+<div class="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-6xl flex mx-auto gap-8">
 
-    <%#= form_with url: analyze_path, method: :post, multipart: true, data: { turbo: false }, class: "space-y-6 bg-white shadow rounded-lg p-6" do |f| %>
 
-    <%= form_with url: analyze_path, method: :post, multipart: true, class: "space-y-4" do |f| %>
+      <!-- Content Section -->
+      <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-lg space-y-6">
+        <div>
+          <h2 class="text-2xl font-semibold text-white mb-4">How to Use Resume Genius</h2>
+          <ol class="space-y-4 text-white/80">
+            <li class="flex items-start">
+              <span class="flex items-center justify-center bg-cyan-400/20 text-cyan-400 rounded-full w-6 h-6 mr-3 mt-0.5 flex-shrink-0">1</span>
+              <span>Upload your current resume in PDF format</span>
+            </li>
+            <li class="flex items-start">
+              <span class="flex items-center justify-center bg-fuchsia-500/20 text-fuchsia-500 rounded-full w-6 h-6 mr-3 mt-0.5 flex-shrink-0">2</span>
+              <span>Enter the job title and description you're applying for</span>
+            </li>
+            <li class="flex items-start">
+              <span class="flex items-center justify-center bg-violet-600/20 text-violet-400 rounded-full w-6 h-6 mr-3 mt-0.5 flex-shrink-0">3</span>
+              <span>Select the type of analysis you need</span>
+            </li>
+            <li class="flex items-start">
+              <span class="flex items-center justify-center bg-emerald-400/20 text-emerald-400 rounded-full w-6 h-6 mr-3 mt-0.5 flex-shrink-0">4</span>
+              <span>Get instant, actionable feedback to improve your resume</span>
+            </li>
+          </ol>
+        </div>
 
-      <div>
-        <%= f.label :job_title, "Job Title", class: "block text-sm font-medium text-gray-700" %>
-        <%= f.text_field :job_title, required: true, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
-      </div>
-
-      <div>
-        <%= f.label :job_description, "Job Description", class: "block text-sm font-medium text-gray-700" %>
-        <%= f.text_area :job_description, rows: 4, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
-      </div>
-
-      <div>
-        <%= f.label :resume, "Upload Resume (PDF only)", class: "block text-sm font-medium text-gray-700" %>
-        <%= f.file_field :resume, accept: 'application/pdf', required: true, class: "mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100" %>
-      </div>
-
-      <div>
-        <label class="block text-sm font-medium text-gray-700">Analysis Type</label>
-        <div class="mt-2 space-y-2">
-          <div class="flex items-center">
-            <%= f.radio_button :prompt_type, 'analyze', checked: true, class: "h-4 w-4 text-indigo-600 focus:ring-indigo-500" %>
-            <%= f.label :prompt_type_analyze, "Full Analysis", class: "ml-3 block text-sm font-medium text-gray-700" %>
-          </div>
-          <div class="flex items-center">
-            <%= f.radio_button :prompt_type, 'recommend', class: "h-4 w-4 text-indigo-600 focus:ring-indigo-500" %>
-            <%= f.label :prompt_type_recommend, "Improvement Recommendations", class: "ml-3 block text-sm font-medium text-gray-700" %>
-          </div>
-          <div class="flex items-center">
-            <%= f.radio_button :prompt_type, 'missing', class: "h-4 w-4 text-indigo-600 focus:ring-indigo-500" %>
-            <%= f.label :prompt_type_missing, "Missing Keywords", class: "ml-3 block text-sm font-medium text-gray-700" %>
-          </div>
-          <div class="flex items-center">
-            <%= f.radio_button :prompt_type, 'match', class: "h-4 w-4 text-indigo-600 focus:ring-indigo-500" %>
-            <%= f.label :prompt_type_match, "ATS Match Percentage", class: "ml-3 block text-sm font-medium text-gray-700" %>
+        <div>
+          <h2 class="text-2xl font-semibold text-white mb-4">About Our Analysis</h2>
+          <div class="space-y-4 text-white/80">
+            <div>
+              <h3 class="font-medium text-white">Full Analysis</h3>
+              <p>Comprehensive review including skills matching, formatting suggestions, and content improvements.</p>
+            </div>
+            <div>
+              <h3 class="font-medium text-white">Improvement Recommendations</h3>
+              <p>Specific suggestions to enhance your resume's impact and readability.</p>
+            </div>
+            <div>
+              <h3 class="font-medium text-white">Missing Keywords</h3>
+              <p>Identifies important keywords from the job description missing from your resume.</p>
+            </div>
+            <div>
+              <h3 class="font-medium text-white">ATS Match Percentage</h3>
+              <p>Estimates how well your resume will perform in Applicant Tracking Systems.</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div>
-        <%#= f.submit "Analyze Resume", class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-        <%= f.submit "Analyze Resume", class: "w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700" %>
-      </div>
-    <% end %>
 
-    <div id="analysis_result" class="mt-8 bg-white shadow rounded-lg p-6">
-      <!-- Results will be displayed here -->
+    <!-- Form Section -->
+    <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-lg">
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-white">Resume Genius</h1>
+        <p class="mt-2 text-sm text-white/80">
+          Upload your resume and job description to get improvements & suggestions
+        </p>
+      </div>
+
+      <%= form_with url: analyze_path, method: :post, id: "analyze-form", data: { turbo_stream: true, loader: true }, local: false, class: "space-y-6 mt-8 bg-white/10 backdrop-blur-md shadow rounded-xl p-6 text-white" do |f| %>
+        <div>
+          <%= f.label :job_title, "Job Title", class: "block text-sm font-medium text-white" %>
+          <%= f.text_field :job_title, required: true, class: "mt-1 block w-full rounded-md bg-white/20 text-white placeholder-white/60 border border-white/30 focus:ring-white focus:border-white sm:text-sm" %>
+        </div>
+
+        <div>
+          <%= f.label :job_description, "Job Description", class: "block text-sm font-medium text-white" %>
+          <%= f.text_area :job_description, rows: 4, class: "mt-1 block w-full rounded-md bg-white/20 text-white placeholder-white/60 border border-white/30 focus:ring-white focus:border-white sm:text-sm" %>
+        </div>
+
+        <div>
+          <%= f.label :resume, "Upload Resume (PDF only)", class: "block text-sm font-medium text-white" %>
+          <%= f.file_field :resume, accept: 'application/pdf', required: true, class: "mt-1 block w-full text-sm text-white file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-white/30 file:text-white hover:file:bg-white/40" %>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-white">Analysis Type</label>
+          <div class="mt-2 space-y-2">
+            <div class="flex items-center">
+              <%= f.radio_button :prompt_type, 'analyze', checked: true, class: "h-4 w-4 text-white focus:ring-white" %>
+              <%= f.label :prompt_type_analyze, "Full Analysis", class: "ml-3 block text-sm text-white" %>
+            </div>
+            <div class="flex items-center">
+              <%= f.radio_button :prompt_type, 'recommend', class: "h-4 w-4 text-white focus:ring-white" %>
+              <%= f.label :prompt_type_recommend, "Improvement Recommendations", class: "ml-3 block text-sm text-white" %>
+            </div>
+            <div class="flex items-center">
+              <%= f.radio_button :prompt_type, 'missing', class: "h-4 w-4 text-white focus:ring-white" %>
+              <%= f.label :prompt_type_missing, "Missing Keywords", class: "ml-3 block text-sm text-white" %>
+            </div>
+            <div class="flex items-center">
+              <%= f.radio_button :prompt_type, 'match', class: "h-4 w-4 text-white focus:ring-white" %>
+              <%= f.label :prompt_type_match, "ATS Match Percentage", class: "ml-3 block text-sm text-white" %>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <%= f.submit "Analyze Resume", class: "w-full flex justify-center py-2 px-4 rounded-md shadow-sm text-sm font-medium text-white bg-white/20 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2" %>
+
+        </div>
+      <% end %>
+
+      <div id="analysis_result" class="mt-8 bg-white/10 backdrop-blur-md shadow rounded-xl p-6">
+        <!-- Results will be displayed here -->
+      </div>
     </div>
+
+
+
   </div>
 </div>
